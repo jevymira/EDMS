@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using Tesseract;
 
 namespace EDMS.Controllers
 {
@@ -8,9 +7,10 @@ namespace EDMS.Controllers
     public class DocumentController : ControllerBase
     {
 
-        [HttpGet(Name = "GetDocumentContent")]
-        public string Get()
+        [HttpPost()]
+        public async Task<IActionResult> OnPostUploadAsync(IFormFile file)
         {
+            /*
             using (var engine = new TesseractEngine(@"./tessdata", "eng", EngineMode.Default))
             {
                 using (var img = Pix.LoadFromFile("Ingest/sample.jpg"))
@@ -22,6 +22,21 @@ namespace EDMS.Controllers
                     }
                 }
             }
+            */
+
+            // https://learn.microsoft.com/en-us/aspnet/core/mvc/models/file-uploads?view=aspnetcore-10.0
+
+            if (file.Length == 0) return BadRequest();
+
+            var fileExtension = Path.GetExtension(file.FileName);
+            var filePath = Path.Combine("Ingest", Guid.NewGuid().ToString() + fileExtension);
+
+            using (var stream = System.IO.File.Create(filePath))
+            {
+                await file.CopyToAsync(stream);
+            }
+
+            return Accepted();
         }
     }
 }
