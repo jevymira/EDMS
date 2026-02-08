@@ -18,20 +18,6 @@ namespace EDMS.Controllers
         [HttpPost()]
         public async Task<IActionResult> OnPostUploadAsync(IFormFile file)
         {
-            /*
-            using (var engine = new TesseractEngine(@"./tessdata", "eng", EngineMode.Default))
-            {
-                using (var img = Pix.LoadFromFile("Ingest/sample.jpg"))
-                {
-                    using (var page = engine.Process(img))
-                    {
-                        var text = page.GetText();
-                        return text;
-                    }
-                }
-            }
-            */
-
             // https://learn.microsoft.com/en-us/aspnet/core/mvc/models/file-uploads?view=aspnetcore-10.0
 
             if (file.Length == 0) return BadRequest();
