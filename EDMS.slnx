@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="Contracts/Contracts.csproj" Id="c195d40e-a4db-4a91-8226-3adc6eb3948b" />
   <Project Path="EDMS/EDMS.csproj" />
 </Solution>
