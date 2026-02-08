@@ -13,7 +13,13 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/openapi/v1.json", "v1");
+    });
+
+    // For "Fetch error, Not Found ./swagger/v1/swagger.json," refer to:
+    // https://github.com/domaindrivendev/Swashbuckle.AspNetCore/issues/3501
 }
 
 app.UseHttpsRedirection();
