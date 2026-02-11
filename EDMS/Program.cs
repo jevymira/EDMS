@@ -1,4 +1,6 @@
+using Infrastructure;
 using MassTransit;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +22,13 @@ builder.Services.AddMassTransit(x =>
 
         cfg.ConfigureEndpoints(context);
     });
+});
+
+builder.Services.AddDbContext<DocumentDbContext>(options =>
+{
+    var connectionString = builder.Configuration
+        .GetConnectionString("DefaultConnection");
+    options.UseSqlServer(connectionString);
 });
 
 var app = builder.Build();

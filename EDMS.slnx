@@ -1,5 +1,7 @@
 <Solution>
   <Project Path="Contracts/Contracts.csproj" Id="c195d40e-a4db-4a91-8226-3adc6eb3948b" />
   <Project Path="DocumentIngestionWorker/DocumentIngestionWorker.csproj" />
+  <Project Path="Domain/Domain.csproj" Id="be99cdfe-807a-43c4-818a-ed2064b23cf9" />
   <Project Path="EDMS/EDMS.csproj" />
+  <Project Path="Infrastructure/Infrastructure.csproj" Id="c103fb55-28ba-4317-b89a-1b82af76b310" />
 </Solution>
